@@ -26,7 +26,7 @@ index.html             page content
 assets/css/style.css   styles (dark theme, responsive, honours prefers-reduced-motion)
 assets/js/main.js      menu, scroll reveal, role rotator, copy email, CV button
 assets/img/            photo, project screenshots, icon sprite, favicon, Open Graph image
-docs/                  optional CV PDF (see docs/README.md)
+docs/                  CV PDF for the download button (see docs/README.md)
 vercel.json            security headers (CSP, frame and referrer policy) and caching
 ```
 
@@ -48,5 +48,5 @@ Vercel deploys `main` as a static site, with no build settings needed. The heade
 
 ## Updating
 
-- **CV:** put the PDF at `docs/Anas_Tanveer_CV.pdf`. The "Download CV" button appears automatically once that file exists.
+- **CV:** replace `docs/Anas_Tanveer_CV.pdf` (same filename). The "Download CV" button only shows while that file exists.
 - **Testimonials:** a comment in `index.html` marks where they go. Only add real quotes, with permission.

@@ -1,82 +1,52 @@
-# Anas Tanveer — IT & Network Infrastructure Specialist
+# Anas Tanveer · Portfolio
 
-> Personal portfolio website showcasing expertise in enterprise networking, VMware virtualization, Zero Trust security, and systems administration.
+Personal site of Anas Tanveer, IT infrastructure engineer (servers and networks) in Karachi.
 
-🌐 **Live Site:** [anastanveer.vercel.app](https://anastanveer.vercel.app)
+**Live:** [anastanveerr.vercel.app](https://anastanveerr.vercel.app)
 
----
+![Preview](assets/img/og.png)
 
-## 👤 About
+## What's on it
 
-Results-driven IT & Network Infrastructure Specialist based in Karachi, Pakistan. Deep expertise in configuring, deploying, and maintaining enterprise-grade systems — from rack-and-stack hardware to Zero Trust security architectures.
+- **Hero:** role, availability (on-site and remote), and the tools I use day to day.
+- **Highlights:** numbers taken from my public repositories: 107 hardening controls, 6 Linux distributions in CI, 21 unit-tested alerts, 5 CI-tested projects.
+- **About, services and how I work.**
+- **Experience:** my roles at R&I Electrical Appliances and my BS in Computer Science.
+- **Projects:** each one links to its repository, with real screenshots or code from that repository.
+- **Skills and contact.**
 
----
+Everything on the page can be checked against my CV, my LinkedIn or the linked repositories.
 
-## 🛠️ Tech Stack
+## Stack
 
-| Layer | Technology |
-|-------|-----------|
-| Markup | HTML5 (Semantic) |
-| Styling | CSS3 (Custom Properties, Grid, Flexbox) |
-| Scripting | Vanilla JavaScript (Canvas API) |
-| Fonts | Google Fonts — DM Sans & DM Mono |
-| Deployment | Vercel |
-
----
-
-## 📁 Project Structure
+Plain HTML, CSS and JavaScript. No framework and no build step.
 
 ```
-anastanveer/
-├── index.html              # Main portfolio page
-├── assets/
-│   ├── css/
-│   │   └── style.css       # All styles
-│   └── js/
-│       └── main.js         # Animations & interactivity
-├── docs/
-│   └── Anas_Tanveer_CV.pdf # Downloadable CV (add yours here)
-├── .gitignore
-├── vercel.json             # Vercel deployment config
-└── README.md
+index.html             page content
+assets/css/style.css   styles (dark theme, responsive, honours prefers-reduced-motion)
+assets/js/main.js      menu, scroll reveal, role rotator, copy email, CV button
+assets/img/            photo, project screenshots, icon sprite, favicon, Open Graph image
+docs/                  optional CV PDF (see docs/README.md)
+vercel.json            security headers (CSP, frame and referrer policy) and caching
 ```
 
----
+Icons come from [Lucide](https://lucide.dev) (ISC license), kept as a local SVG sprite. The hero tech icons come from [skillicons.dev](https://skillicons.dev) and are also stored locally. Nothing loads from a third-party server except Google Fonts.
 
-## 🚀 Deployment (Vercel)
+## Run locally
 
-This project is deployed via [Vercel](https://vercel.com).
-
-### Steps to deploy:
-1. Push this repo to GitHub
-2. Go to [vercel.com](https://vercel.com) → **New Project**
-3. Import the `anastanveer` GitHub repository
-4. Vercel auto-detects a static site — click **Deploy**
-5. Your site will be live in ~60 seconds ✅
-
----
-
-## 💻 Local Development
-
-No build tools or dependencies needed. Simply open in browser:
+Any static file server works, for example:
 
 ```bash
-# Clone the repo
-git clone https://github.com/anastanveer653/anastanveer.git
-
-# Open in browser
-open index.html
-# or use Live Server in VS Code
+npx serve .
 ```
 
----
+Then open the address it prints. Opening `index.html` straight from disk also works, but browsers block the icon sprite over `file://`.
 
-## 📬 Contact
+## Deploy
 
-- 📧 Email: [LinkedIn Contact](https://www.linkedin.com/in/anastanveer-it/)
-- 💼 LinkedIn: [linkedin.com/in/anastanveer-it](https://www.linkedin.com/in/anastanveer-it/)
-- 🐙 GitHub: [github.com/anastanveer653](https://github.com/anastanveer653)
+Vercel deploys `main` as a static site, with no build settings needed. The headers in `vercel.json` include a strict Content-Security-Policy. If you add an inline script, add its SHA-256 hash to `script-src`.
 
----
+## Updating
 
-© 2024 Anas Tanveer — Karachi, Pakistan
+- **CV:** put the PDF at `docs/Anas_Tanveer_CV.pdf`. The "Download CV" button appears automatically once that file exists.
+- **Testimonials:** a comment in `index.html` marks where they go. Only add real quotes, with permission.

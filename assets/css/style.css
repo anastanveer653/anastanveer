@@ -197,12 +197,12 @@ button { font: inherit; color: inherit; }
   box-shadow: 0 20px 50px -20px rgba(0, 0, 0, 0.8);
 }
 .float-card--status {
-  top: 8%; right: -8%; display: flex; align-items: center; gap: 12px; padding: 12px 16px;
+  top: -2%; right: -12%; display: flex; align-items: center; gap: 12px; padding: 12px 16px;
   animation: float 6s ease-in-out infinite;
 }
 .float-card--status strong { display: block; font-size: 14px; }
 .float-card--status span { color: var(--muted); font-size: 12px; }
-.code-card { left: -14%; bottom: 2%; width: 352px; animation: float 7s ease-in-out infinite reverse; }
+.code-card { left: -20%; bottom: -14%; width: 336px; animation: float 7s ease-in-out infinite reverse; }
 @keyframes float { 50% { transform: translateY(-10px); } }
 
 .code-card figcaption, .term figcaption {
@@ -436,12 +436,17 @@ button { font: inherit; color: inherit; }
 .js .reveal.is-visible { opacity: 1; transform: none; }
 
 /* ---------- responsive ---------- */
+@media (max-width: 1240px) {
+  .code-card { left: -6%; bottom: -16%; width: 312px; }
+  .float-card--status { right: -4%; }
+}
+
 @media (max-width: 1080px) {
   .cards--3 { grid-template-columns: repeat(2, 1fr); }
   .process { grid-template-columns: repeat(3, 1fr); }
   .process li:nth-child(3)::after { display: none; }
-  .code-card { left: -4%; }
-  .float-card--status { right: -2%; }
+  .code-card { left: -2%; }
+  .float-card--status { right: -1%; }
 }
 
 @media (max-width: 900px) {
@@ -465,7 +470,9 @@ button { font: inherit; color: inherit; }
   .hero { padding-top: calc(var(--nav-h) + 40px); }
   .hero__grid { grid-template-columns: 1fr; gap: 56px; }
   .hero__visual { width: min(100%, 380px); }
-  .code-card { width: 260px; left: -6%; bottom: -6%; }
+  .hero__visual { aspect-ratio: auto; }
+  .portrait { position: relative; inset: auto; width: 82%; aspect-ratio: 1; margin: 0 auto; }
+  .code-card { position: relative; left: auto; bottom: auto; width: 100%; margin-top: 28px; animation: none; }
   .stats { grid-template-columns: repeat(2, 1fr); }
   .stat:nth-child(3) { border-left: 0; }
   .stat:nth-child(n + 3) { border-top: 1px solid var(--border); }

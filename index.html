@@ -43,7 +43,7 @@
   <!-- ================= NAV ================= -->
   <header class="nav" id="top">
     <div class="nav__inner">
-      <a class="brand" href="#top" aria-label="Anas Tanveer, back to top">Anas Tanveer<span>IT infrastructure</span></a>
+      <a class="brand" href="#top">Anas Tanveer <span>IT infrastructure</span></a>
 
       <nav class="nav__links" id="nav-links" aria-label="Main">
         <a href="#services">What I do</a>
@@ -69,10 +69,13 @@
          and rack.js pulls out the device that matches the text block in the middle of the screen. -->
     <section class="stage">
       <div class="stage__hero">
-        <p class="hero__kicker">
-          <span><i class="led"></i>Available for on-site &amp; remote roles</span>
-          <span>Karachi, PK · UTC+5</span>
-        </p>
+        <div class="hero__top">
+          <img class="hero__photo" src="assets/img/anas.jpg" alt="Anas Tanveer" width="800" height="800">
+          <p class="hero__kicker">
+            <span><i class="led"></i>Available for on-site &amp; remote roles</span>
+            <span>IT Infrastructure Engineer · Karachi, PK · UTC+5</span>
+          </p>
+        </div>
 
         <h1 class="hero__title">Anas Tanveer keeps the server room
           <em>boring.<svg viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path d="M3 13C40 4 70 18 110 10S180 4 215 12s55 3 82-5"/></svg></em>
@@ -92,6 +95,11 @@
           <a class="btn" id="cv-btn" href="docs/Anas_Tanveer_CV.pdf" download hidden>Download CV <svg class="ic"><use href="assets/img/icons.svg#i-download"/></svg></a>
         </div>
 
+        <div class="hero__tools">
+          <p>Technologies I work with</p>
+          <img src="assets/img/tech-icons.svg" alt="Windows, Linux, PowerShell, Ansible, Terraform, Docker, AWS, C#, .NET" width="498" height="48">
+        </div>
+
         <!-- Every number below is counted from the public repositories. -->
         <ul class="specs" aria-label="Highlights">
           <li><strong>107</strong><span>Windows hardening controls, mapped to CIS &amp; MITRE ATT&amp;CK</span></li>
@@ -105,6 +113,7 @@
         <div class="rack" id="rack" data-mode="hero">
           <img class="rack__still" src="assets/img/rack-still.webp" alt="Line drawing of a server rack with a patch panel, switch, firewall, console drawer, servers, IP PBX, monitoring unit and UPS" width="1134" height="1350" loading="lazy" decoding="async">
           <canvas class="rack__canvas" id="rack-canvas" aria-hidden="true"></canvas>
+          <p class="rack__loading" aria-hidden="true">Racking devices<i>…</i></p>
           <svg class="rack__leaders" id="rack-leaders" aria-hidden="true"></svg>
           <div class="rack__labels" id="rack-labels" aria-hidden="true"></div>
           <p class="rack__note">Fig. 1 · An illustrative rack, not a real site's layout. <span>Drag to turn it.</span></p>
@@ -118,42 +127,42 @@
         </header>
 
         <article class="step" data-step="network">
-          <p class="step__id">PP-01 · SW-01</p>
+          <p class="step__id"><span>1 / 6</span>PP-01 · SW-01</p>
           <h3>Switching &amp; routing</h3>
           <p>Cisco routing and switching, VLANs, NAT and subnetting, and fault-finding with Wireshark when a link misbehaves.</p>
           <p class="step__meta"><i class="led"></i>Daily, on-site</p>
         </article>
 
         <article class="step" data-step="firewall">
-          <p class="step__id">FW-01</p>
+          <p class="step__id"><span>2 / 6</span>FW-01</p>
           <h3>Firewalls &amp; VPN</h3>
           <p>I configure and troubleshoot next-generation firewalls at work, and run pfSense on my own projects: rules, NAT and VPN.</p>
           <p class="step__meta"><i class="led"></i>Daily, on-site</p>
         </article>
 
         <article class="step" data-step="server">
-          <p class="step__id">SRV-01</p>
+          <p class="step__id"><span>3 / 6</span>SRV-01</p>
           <h3>Windows Server &amp; Active Directory</h3>
           <p>AD DS, Group Policy and OUs, DNS and DHCP, file and print servers with NTFS permissions, set up cleanly and kept documented.</p>
           <p class="step__meta"><i class="led"></i>Daily, on-site</p>
         </article>
 
         <article class="step" data-step="hypervisor">
-          <p class="step__id">HV-01</p>
+          <p class="step__id"><span>4 / 6</span>HV-01</p>
           <h3>Virtualization</h3>
           <p>VMware ESXi and Workstation, and Hyper-V: the virtual machines the rest of the rack depends on.</p>
           <p class="step__meta"><i class="led"></i>Daily, on-site</p>
         </article>
 
         <article class="step" data-step="voip">
-          <p class="step__id">PBX-01 · MON-01</p>
+          <p class="step__id"><span>5 / 6</span>PBX-01 · MON-01</p>
           <h3>VoIP &amp; data-center monitoring</h3>
           <p>Grandstream UCM IP PBX (extensions and SIP accounts) and Vutlan monitoring for server rooms and data-center equipment.</p>
           <p class="step__meta"><i class="led"></i>Daily, on-site</p>
         </article>
 
         <article class="step" data-step="console">
-          <p class="step__id">KVM-01</p>
+          <p class="step__id"><span>6 / 6</span>KVM-01</p>
           <h3>Automation &amp; hardening</h3>
           <p>PowerShell, Ansible and Terraform with GitHub Actions, so servers and cloud environments are built the same way every time. Windows Server hardened against CIS-mapped controls with preview and one-command rollback; Linux hardened with idempotent Ansible roles.</p>
           <p>And when a team needs software, I write it: business apps in C#, .NET Blazor, EF Core and SQL Server, and command-line tools in Go.</p>
@@ -528,7 +537,7 @@
     </div>
   </footer>
 
+  <!-- main.js loads assets/js/rack.js (the 3D rack) once the page itself has finished loading. -->
   <script src="assets/js/main.js" defer></script>
-  <script type="module" src="assets/js/rack.js"></script>
 </body>
 </html>

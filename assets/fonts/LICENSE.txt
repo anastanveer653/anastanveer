@@ -1,0 +1,6 @@
+Fonts in this folder (Latin subsets, WOFF2), stored locally so the site loads nothing from a font service:
+
+- Barlow Condensed 700: Copyright The Barlow Project Authors (https://github.com/jpt/barlow)
+- IBM Plex Sans (variable, weights 400 to 600) and IBM Plex Mono 400 and 500: Copyright IBM Corp. (https://github.com/IBM/plex)
+
+All are licensed under the SIL Open Font License, Version 1.1: https://openfontlicense.org

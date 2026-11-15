@@ -1,15 +1,13 @@
-// Anas Tanveer · portfolio interactions. No dependencies.
+// Anas Tanveer · portfolio interactions. No dependencies. The 3D rack is in rack.js.
 (() => {
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const narrow = window.matchMedia('(max-width: 1000px)');
 
   // ---- nav: background on scroll, mobile menu ----
   const nav = document.querySelector('.nav');
   const toggle = document.getElementById('nav-toggle');
   const links = document.getElementById('nav-links');
-
-  const onScroll = () => nav.classList.toggle('is-scrolled', window.scrollY > 12);
-  onScroll();
-  window.addEventListener('scroll', onScroll, { passive: true });
 
   const setMenu = (open) => {
     nav.classList.toggle('is-open', open);
@@ -31,6 +29,57 @@
   }, { rootMargin: '-45% 0px -50% 0px' });
   sections.forEach((s) => spy.observe(s));
 
+  // ---- rack steps: the text block crossing the reading line picks the device rack.js pulls out ----
+  const steps = [...document.querySelectorAll('.step')];
+  let currentStep = null;
+  const setStep = (name) => {
+    if (name === currentStep) return;
+    currentStep = name;
+    document.documentElement.dataset.rackStep = name || '';
+    steps.forEach((s) => s.classList.toggle('is-active', s.dataset.step === name));
+    window.dispatchEvent(new CustomEvent('rack:step', { detail: name }));
+  };
+  const pickStep = () => {
+    // On narrow screens the rack covers the top half, so the reading line sits lower.
+    const line = window.innerHeight * (narrow.matches ? 0.74 : 0.5);
+    let found = null;
+    for (const s of steps) {
+      const r = s.getBoundingClientRect();
+      if (r.top <= line && r.bottom > line) { found = s.dataset.step; break; }
+    }
+    if (!found && steps.length && steps[steps.length - 1].getBoundingClientRect().bottom <= line) {
+      found = steps[steps.length - 1].dataset.step;
+    }
+    setStep(found);
+  };
+
+  let ticking = false;
+  const onScroll = () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      ticking = false;
+      nav.classList.toggle('is-scrolled', window.scrollY > 12);
+      pickStep();
+    });
+  };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+
+  // ---- rack: the 3D scene loads after the page itself, so it never delays the text ----
+  // Visitors who asked their browser to save data get the still image instead, and so does
+  // anyone whose scene has not started after a while (blocked script, very slow network).
+  const rack = document.getElementById('rack');
+  if (rack) {
+    const showStill = () => { if (!rack.classList.contains('is-live')) rack.classList.add('is-static'); };
+    const startRack = () => import('./rack.js').catch(showStill);
+    if (navigator.connection && navigator.connection.saveData) showStill();
+    else if (document.readyState === 'complete') startRack();
+    else window.addEventListener('load', startRack, { once: true });
+    setTimeout(showStill, 8000);
+  }
+
   // ---- reveal on scroll ----
   const reveals = document.querySelectorAll('.reveal');
   if (reduceMotion || !('IntersectionObserver' in window)) {
@@ -43,57 +92,25 @@
         io.unobserve(entry.target);
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-    reveals.forEach((el, i) => {
-      el.style.transitionDelay = `${(i % 3) * 80}ms`;
-      io.observe(el);
-    });
+    reveals.forEach((el) => io.observe(el));
   }
 
-  // ---- stats: count up once visible ----
-  const counters = document.querySelectorAll('[data-count]');
-  if (!reduceMotion) {
-    const countIo = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        const el = entry.target;
-        const target = Number(el.dataset.count);
-        const start = performance.now();
-        const step = (now) => {
-          const t = Math.min((now - start) / 1200, 1);
-          el.textContent = Math.round(target * (1 - Math.pow(1 - t, 3)));
-          if (t < 1) requestAnimationFrame(step);
-        };
-        requestAnimationFrame(step);
-        countIo.unobserve(el);
+  // ---- tilt: the pass and the project screenshots lean towards the pointer ----
+  if (!reduceMotion && finePointer) {
+    document.querySelectorAll('[data-tilt]').forEach((el) => {
+      const max = Number(el.dataset.tilt) || 6;
+      el.addEventListener('pointermove', (e) => {
+        const r = el.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - 0.5;
+        const y = (e.clientY - r.top) / r.height - 0.5;
+        el.style.setProperty('--ry', `${(x * max * 2).toFixed(2)}deg`);
+        el.style.setProperty('--rx', `${(-y * max * 2).toFixed(2)}deg`);
       });
-    }, { threshold: 0.6 });
-    counters.forEach((el) => countIo.observe(el));
-  }
-
-  // ---- hero: typing role rotator ----
-  const rotator = document.getElementById('rotator');
-  const roles = [
-    'IT Infrastructure Engineer',
-    'Windows Server & AD admin',
-    'Cisco network engineer',
-    'VoIP & data-center specialist',
-    'automation engineer',
-    '.NET & SQL Server developer',
-  ];
-  if (rotator && !reduceMotion) {
-    let role = 0;
-    let chars = roles[0].length;
-    let deleting = true;
-    const tick = () => {
-      const word = roles[role];
-      chars += deleting ? -1 : 1;
-      rotator.textContent = word.slice(0, chars);
-      let delay = deleting ? 38 : 70;
-      if (!deleting && chars === word.length) { deleting = true; delay = 2200; }
-      else if (deleting && chars === 0) { deleting = false; role = (role + 1) % roles.length; delay = 300; }
-      setTimeout(tick, delay);
-    };
-    setTimeout(tick, 2600);
+      el.addEventListener('pointerleave', () => {
+        el.style.setProperty('--rx', '0deg');
+        el.style.setProperty('--ry', '0deg');
+      });
+    });
   }
 
   // ---- contact: copy email ----

@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Anas Tanveer · IT Infrastructure Engineer (Servers &amp; Networks)</title>
   <meta name="description" content="Anas Tanveer is an IT infrastructure engineer in Karachi: Windows Server, Active Directory, Cisco networking, VMware, Grandstream VoIP and Vutlan monitoring, plus automation and .NET development. Open to on-site and remote roles.">
-  <meta name="theme-color" content="#070b14">
-  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#f2efe8">
+  <meta name="color-scheme" content="light">
   <link rel="canonical" href="https://anastanveerr.vercel.app/">
 
   <meta property="og:type" content="profile">
@@ -18,9 +18,8 @@
 
   <script>document.documentElement.classList.add('js')</script>
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+  <link rel="preload" href="assets/fonts/barlow-condensed-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/ibm-plex-sans-variable.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/style.css">
 
   <script type="application/ld+json">
@@ -43,22 +42,19 @@
 
   <!-- ================= NAV ================= -->
   <header class="nav" id="top">
-    <div class="container nav__inner">
-      <a class="logo" href="#top" aria-label="Anas Tanveer, back to top">
-        <span class="logo__mark">AT</span>
-        <span class="logo__text">Anas<span class="accent">.</span>Tanveer</span>
-      </a>
+    <div class="nav__inner">
+      <a class="brand" href="#top">Anas Tanveer <span>IT infrastructure</span></a>
 
       <nav class="nav__links" id="nav-links" aria-label="Main">
+        <a href="#services">What I do</a>
         <a href="#about">About</a>
-        <a href="#services">Services</a>
         <a href="#experience">Experience</a>
         <a href="#projects">Projects</a>
         <a href="#skills">Skills</a>
         <a href="#contact">Contact</a>
       </nav>
 
-      <a class="btn btn--primary btn--sm nav__cta" href="#contact">Hire me <svg class="ic"><use href="assets/img/icons.svg#i-arrow-up-right"/></svg></a>
+      <a class="btn btn--solid btn--sm nav__cta" href="#contact">Hire me</a>
 
       <button class="nav__toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
         <svg class="ic ic--open"><use href="assets/img/icons.svg#i-menu"/></svg>
@@ -68,205 +64,204 @@
   </header>
 
   <main id="main">
-    <!-- ================= HERO ================= -->
-    <section class="hero">
-      <div class="hero__glow" aria-hidden="true"></div>
-      <div class="container hero__grid">
-        <div class="hero__copy">
-          <span class="pill"><span class="pill__dot"></span>Available for on-site &amp; remote roles</span>
-
-          <h1 class="hero__title">Hi, I'm <span class="gradient-text">Anas Tanveer</span></h1>
-          <p class="hero__role">
-            <span class="hero__role-label">I'm an</span>
-            <span class="rotator" id="rotator" aria-live="polite">IT Infrastructure Engineer</span>
+    <!-- ================= HERO + WHAT I DO =================
+         One tall section. The rack on the right stays in view while the text on the left scrolls,
+         and rack.js pulls out the device that matches the text block in the middle of the screen. -->
+    <section class="stage">
+      <div class="stage__hero">
+        <div class="hero__top">
+          <img class="hero__photo" src="assets/img/anas.jpg" alt="Anas Tanveer" width="800" height="800">
+          <p class="hero__kicker">
+            <span><i class="led"></i>Available for on-site &amp; remote roles</span>
+            <span>IT Infrastructure Engineer · Karachi, PK · UTC+5</span>
           </p>
-
-          <p class="hero__lede">
-            I work on the server and network side: Windows Server, Active Directory, Cisco networks, VMware,
-            VoIP and data-center monitoring, on-site, every day. With a BS in Computer Science, I also automate
-            and code the parts that shouldn't be done by hand.
-          </p>
-
-          <div class="hero__actions">
-            <a class="btn btn--primary" href="#projects">View my work <svg class="ic"><use href="assets/img/icons.svg#i-arrow-right"/></svg></a>
-            <a class="btn btn--ghost" href="mailto:anastanveer653@gmail.com">Email me <svg class="ic"><use href="assets/img/icons.svg#i-mail"/></svg></a>
-            <!-- Shown by main.js only when docs/Anas_Tanveer_CV.pdf exists, so the link is never broken. -->
-            <a class="btn btn--ghost" id="cv-btn" href="docs/Anas_Tanveer_CV.pdf" download hidden>Download CV <svg class="ic"><use href="assets/img/icons.svg#i-download"/></svg></a>
-          </div>
-
-          <div class="hero__tech">
-            <p class="eyebrow">Technologies I work with</p>
-            <img src="assets/img/tech-icons.svg" alt="Windows, Linux, PowerShell, Ansible, Terraform, Docker, AWS, C#, .NET" width="498" height="48" loading="eager">
-          </div>
         </div>
 
-        <div class="hero__visual">
-          <div class="portrait">
-            <div class="portrait__ring" aria-hidden="true"></div>
-            <img src="assets/img/anas.jpg" alt="Portrait of Anas Tanveer" width="800" height="800">
-          </div>
-          <div class="dots" aria-hidden="true"></div>
+        <h1 class="hero__title">Anas Tanveer keeps the server room
+          <em>boring.<svg viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path d="M3 13C40 4 70 18 110 10S180 4 215 12s55 3 82-5"/></svg></em>
+        </h1>
 
-          <div class="float-card float-card--status">
-            <span class="status-dot"></span>
-            <div>
-              <strong>5 open-source projects</strong>
-              <span>tests run on every push</span>
-            </div>
-          </div>
+        <p class="hero__lede">
+          Boring is the goal: nothing down, nothing on fire. I work on the server and network side:
+          <strong>Windows Server, Active Directory, Cisco networks, VMware, VoIP and data-center monitoring</strong>,
+          on-site, every day. With a BS in Computer Science, I also automate and code the parts that
+          shouldn't be done by hand.
+        </p>
 
-          <figure class="code-card" aria-label="Profile summary">
-            <figcaption><span class="code-card__dots"><i></i><i></i><i></i></span> anas.yml</figcaption>
-<pre><code><span class="k">role</span>: <span class="s">IT Infrastructure Engineer</span>
-<span class="k">focus</span>: [<span class="s">servers</span>, <span class="s">networks</span>, <span class="s">automation</span>]
-<span class="k">daily</span>: [<span class="s">Windows Server</span>, <span class="s">AD</span>, <span class="s">Cisco</span>, <span class="s">VMware</span>]
-<span class="k">also_codes</span>: [<span class="s">C#</span>, <span class="s">.NET</span>, <span class="s">SQL</span>, <span class="s">Go</span>]
-<span class="k">open_to</span>: [<span class="s">on-site</span>, <span class="s">remote</span>]</code></pre>
-          </figure>
+        <div class="hero__actions">
+          <a class="btn btn--solid" href="#projects">View my work <svg class="ic"><use href="assets/img/icons.svg#i-arrow-right"/></svg></a>
+          <a class="btn" href="mailto:anastanveer653@gmail.com">Email me <svg class="ic"><use href="assets/img/icons.svg#i-mail"/></svg></a>
+          <!-- Shown by main.js only when docs/Anas_Tanveer_CV.pdf exists, so the link is never broken. -->
+          <a class="btn" id="cv-btn" href="docs/Anas_Tanveer_CV.pdf" download hidden>Download CV <svg class="ic"><use href="assets/img/icons.svg#i-download"/></svg></a>
+        </div>
+
+        <div class="hero__tools">
+          <p>Technologies I work with</p>
+          <img src="assets/img/tech-icons.svg" alt="Windows, Linux, PowerShell, Ansible, Terraform, Docker, AWS, C#, .NET" width="498" height="48">
+        </div>
+
+        <!-- Every number below is counted from the public repositories. -->
+        <ul class="specs" aria-label="Highlights">
+          <li><strong>107</strong><span>Windows hardening controls, mapped to CIS &amp; MITRE ATT&amp;CK</span></li>
+          <li><strong>6</strong><span>Linux distributions tested in CI</span></li>
+          <li><strong>21</strong><span>monitoring alerts, each unit-tested with a runbook</span></li>
+          <li><strong>5</strong><span>open-source infrastructure projects, CI on every push</span></li>
+        </ul>
+      </div>
+
+      <div class="stage__visual">
+        <div class="rack" id="rack" data-mode="hero">
+          <img class="rack__still" src="assets/img/rack-still.webp" alt="Line drawing of a server rack with a patch panel, switch, firewall, console drawer, servers, IP PBX, monitoring unit and UPS" width="1134" height="1350" loading="lazy" decoding="async">
+          <canvas class="rack__canvas" id="rack-canvas" aria-hidden="true"></canvas>
+          <p class="rack__loading" aria-hidden="true">Racking devices<i>…</i></p>
+          <svg class="rack__leaders" id="rack-leaders" aria-hidden="true"></svg>
+          <div class="rack__labels" id="rack-labels" aria-hidden="true"></div>
+          <p class="rack__note">Fig. 1 · An illustrative rack, not a real site's layout. <span>Drag to turn it.</span></p>
         </div>
       </div>
 
-      <!-- Every number below is counted from the public repositories. -->
-      <div class="container">
-        <ul class="stats" aria-label="Highlights">
-          <li class="stat reveal"><strong data-count="107">107</strong><span>Windows hardening controls, mapped to CIS &amp; MITRE ATT&amp;CK</span></li>
-          <li class="stat reveal"><strong data-count="6">6</strong><span>Linux distributions tested in CI</span></li>
-          <li class="stat reveal"><strong data-count="21">21</strong><span>monitoring alerts, each unit-tested with a runbook</span></li>
-          <li class="stat reveal"><strong data-count="5">5</strong><span>open-source infrastructure projects, CI on every push</span></li>
-        </ul>
+      <div class="stage__steps" id="services">
+        <header class="steps__head">
+          <p class="head__no">01 / What I do</p>
+          <h2>What's in the rack is what I look after</h2>
+        </header>
+
+        <article class="step" data-step="network">
+          <p class="step__id"><span>1 / 6</span>PP-01 · SW-01</p>
+          <h3>Switching &amp; routing</h3>
+          <p>Cisco routing and switching, VLANs, NAT and subnetting, and fault-finding with Wireshark when a link misbehaves.</p>
+          <p class="step__meta"><i class="led"></i>Daily, on-site</p>
+        </article>
+
+        <article class="step" data-step="firewall">
+          <p class="step__id"><span>2 / 6</span>FW-01</p>
+          <h3>Firewalls &amp; VPN</h3>
+          <p>I configure and troubleshoot next-generation firewalls at work, and run pfSense on my own projects: rules, NAT and VPN.</p>
+          <p class="step__meta"><i class="led"></i>Daily, on-site</p>
+        </article>
+
+        <article class="step" data-step="server">
+          <p class="step__id"><span>3 / 6</span>SRV-01</p>
+          <h3>Windows Server &amp; Active Directory</h3>
+          <p>AD DS, Group Policy and OUs, DNS and DHCP, file and print servers with NTFS permissions, set up cleanly and kept documented.</p>
+          <p class="step__meta"><i class="led"></i>Daily, on-site</p>
+        </article>
+
+        <article class="step" data-step="hypervisor">
+          <p class="step__id"><span>4 / 6</span>HV-01</p>
+          <h3>Virtualization</h3>
+          <p>VMware ESXi and Workstation, and Hyper-V: the virtual machines the rest of the rack depends on.</p>
+          <p class="step__meta"><i class="led"></i>Daily, on-site</p>
+        </article>
+
+        <article class="step" data-step="voip">
+          <p class="step__id"><span>5 / 6</span>PBX-01 · MON-01</p>
+          <h3>VoIP &amp; data-center monitoring</h3>
+          <p>Grandstream UCM IP PBX (extensions and SIP accounts) and Vutlan monitoring for server rooms and data-center equipment.</p>
+          <p class="step__meta"><i class="led"></i>Daily, on-site</p>
+        </article>
+
+        <article class="step" data-step="console">
+          <p class="step__id"><span>6 / 6</span>KVM-01</p>
+          <h3>Automation &amp; hardening</h3>
+          <p>PowerShell, Ansible and Terraform with GitHub Actions, so servers and cloud environments are built the same way every time. Windows Server hardened against CIS-mapped controls with preview and one-command rollback; Linux hardened with idempotent Ansible roles.</p>
+          <p>And when a team needs software, I write it: business apps in C#, .NET Blazor, EF Core and SQL Server, and command-line tools in Go.</p>
+          <p class="step__meta"><i class="led led--amber"></i>Open source · <a href="#projects">see the projects</a></p>
+        </article>
       </div>
     </section>
 
     <!-- ================= ABOUT ================= -->
     <section class="section" id="about">
       <div class="container about">
-        <div class="about__copy reveal">
-          <p class="eyebrow">About me</p>
-          <h2 class="section__title">Servers, networks, and the code that keeps them in line.</h2>
-          <p>
-            I'm the person people call when something stops working. At my current job I look after the servers,
-            network devices and end-user systems of an enterprise environment in Karachi: Active Directory and Group
-            Policy, DNS and DHCP, file servers and permissions, Cisco switching and routing, Grandstream VoIP, and
-            Vutlan monitoring for the server room and data-center equipment.
-          </p>
-          <p>
-            My Computer Science degree means I don't stop at fixing things by hand. I harden Windows servers with
-            PowerShell, configure Linux with Ansible, describe cloud infrastructure in Terraform, monitor it all with
-            Prometheus and Grafana, and build software when a team needs it, like an HR and attendance platform in
-            .NET Blazor and SQL Server.
-          </p>
-          <ul class="checks">
+        <div class="about__id reveal">
+          <div class="pass" data-tilt="7">
+            <span class="pass__strap" aria-hidden="true"></span>
+            <div class="pass__card">
+              <span class="pass__slot" aria-hidden="true"></span>
+              <img src="assets/img/anas.jpg" alt="Portrait of Anas Tanveer" width="800" height="800" loading="lazy">
+              <p class="pass__name">Anas Tanveer</p>
+              <p class="pass__role">IT Infrastructure Engineer</p>
+              <dl>
+                <div><dt>Based</dt><dd>Karachi, Pakistan</dd></div>
+                <div><dt>Time</dt><dd>UTC+5</dd></div>
+                <div><dt>Open to</dt><dd>On-site · Remote · Contract</dd></div>
+              </dl>
+              <span class="pass__code" aria-hidden="true"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="about__copy">
+          <header class="head reveal">
+            <p class="head__no">02 / About</p>
+            <h2>Servers, networks, and the code that keeps them in line.</h2>
+          </header>
+          <div class="prose reveal">
+            <p>
+              I'm the person people call when something stops working. At my current job I look after the servers,
+              network devices and end-user systems of an enterprise environment in Karachi: Active Directory and Group
+              Policy, DNS and DHCP, file servers and permissions, Cisco switching and routing, Grandstream VoIP, and
+              Vutlan monitoring for the server room and data-center equipment.
+            </p>
+            <p>
+              My Computer Science degree means I don't stop at fixing things by hand. I harden Windows servers with
+              PowerShell, configure Linux with Ansible, describe cloud infrastructure in Terraform, monitor it all with
+              Prometheus and Grafana, and build software when a team needs it, like an HR and attendance platform in
+              .NET Blazor and SQL Server.
+            </p>
+          </div>
+          <ul class="checks reveal">
             <li><svg class="ic"><use href="assets/img/icons.svg#i-check"/></svg>Changes planned with a rollback path</li>
             <li><svg class="ic"><use href="assets/img/icons.svg#i-check"/></svg>Automation over repeated manual work</li>
             <li><svg class="ic"><use href="assets/img/icons.svg#i-check"/></svg>Everything tested and documented</li>
             <li><svg class="ic"><use href="assets/img/icons.svg#i-check"/></svg>Clear updates for non-technical people</li>
           </ul>
-        </div>
 
-        <aside class="facts reveal" aria-label="Quick facts">
-          <div class="fact">
-            <svg class="ic"><use href="assets/img/icons.svg#i-briefcase"/></svg>
-            <div><span>Current role</span><strong>IT Support Officer</strong><small>R&amp;I Electrical Appliances, on-site</small></div>
-          </div>
-          <div class="fact">
-            <svg class="ic"><use href="assets/img/icons.svg#i-graduation-cap"/></svg>
-            <div><span>Education</span><strong>BS Computer Science</strong><small>Iqra University, Karachi</small></div>
-          </div>
-          <div class="fact">
-            <svg class="ic"><use href="assets/img/icons.svg#i-map-pin"/></svg>
-            <div><span>Location</span><strong>Karachi, Pakistan</strong><small>UTC+5</small></div>
-          </div>
-          <div class="fact">
-            <svg class="ic"><use href="assets/img/icons.svg#i-badge-check"/></svg>
-            <div><span>Open to</span><strong>On-site · Remote · Contract</strong><small>full-time or project-based</small></div>
-          </div>
-        </aside>
-      </div>
-    </section>
-
-    <!-- ================= SERVICES ================= -->
-    <section class="section section--alt" id="services">
-      <div class="container">
-        <header class="section__head reveal">
-          <p class="eyebrow">What I do</p>
-          <h2 class="section__title">How I can help your team</h2>
-        </header>
-
-        <div class="cards cards--3">
-          <article class="card reveal">
-            <span class="card__icon"><svg class="ic"><use href="assets/img/icons.svg#i-server"/></svg></span>
-            <span class="tag tag--live">Daily, on-site</span>
-            <h3>Windows Server &amp; Active Directory</h3>
-            <p>AD DS, Group Policy and OUs, DNS and DHCP, file and print servers with NTFS permissions, set up cleanly and kept documented.</p>
-          </article>
-          <article class="card reveal">
-            <span class="card__icon"><svg class="ic"><use href="assets/img/icons.svg#i-network"/></svg></span>
-            <span class="tag tag--live">Daily, on-site</span>
-            <h3>Networking &amp; security</h3>
-            <p>Cisco routing and switching, VLANs, VPN, NAT and subnetting, next-generation firewalls and pfSense, and fault-finding with Wireshark.</p>
-          </article>
-          <article class="card reveal">
-            <span class="card__icon"><svg class="ic"><use href="assets/img/icons.svg#i-phone-call"/></svg></span>
-            <span class="tag tag--live">Daily, on-site</span>
-            <h3>VoIP &amp; data-center monitoring</h3>
-            <p>Grandstream UCM IP PBX (extensions and SIP accounts) and Vutlan monitoring for server rooms and data-center equipment.</p>
-          </article>
-          <article class="card reveal">
-            <span class="card__icon"><svg class="ic"><use href="assets/img/icons.svg#i-shield-check"/></svg></span>
-            <span class="tag">Open source</span>
-            <h3>Server hardening</h3>
-            <p>Windows Server hardened against CIS-mapped controls with preview and one-command rollback; Linux hardened with idempotent Ansible roles.</p>
-          </article>
-          <article class="card reveal">
-            <span class="card__icon"><svg class="ic"><use href="assets/img/icons.svg#i-terminal"/></svg></span>
-            <span class="tag">Open source</span>
-            <h3>Automation &amp; infrastructure as code</h3>
-            <p>PowerShell, Ansible and Terraform with GitHub Actions, so servers and cloud environments are built the same way every time.</p>
-          </article>
-          <article class="card reveal">
-            <span class="card__icon"><svg class="ic"><use href="assets/img/icons.svg#i-code-xml"/></svg></span>
-            <span class="tag">In development</span>
-            <h3>Software &amp; databases</h3>
-            <p>Business apps in C#, .NET Blazor, EF Core and SQL Server, and command-line tools in Go.</p>
-          </article>
+          <dl class="facts reveal" aria-label="Quick facts">
+            <div><dt>Current role</dt><dd>IT Support Officer<small>R&amp;I Electrical Appliances, on-site</small></dd></div>
+            <div><dt>Education</dt><dd>BS Computer Science<small>Iqra University, Karachi</small></dd></div>
+            <div><dt>Location</dt><dd>Karachi, Pakistan<small>UTC+5</small></dd></div>
+            <div><dt>Open to</dt><dd>On-site · Remote · Contract<small>full-time or project-based</small></dd></div>
+          </dl>
         </div>
       </div>
     </section>
 
     <!-- ================= PROCESS ================= -->
-    <section class="section" id="process">
+    <section class="section section--tint" id="process">
       <div class="container">
-        <header class="section__head reveal">
-          <p class="eyebrow">How I work</p>
-          <h2 class="section__title">From &ldquo;it&rsquo;s broken&rdquo; to &ldquo;it&rsquo;s documented&rdquo;</h2>
+        <header class="head reveal">
+          <p class="head__no">03 / How I work</p>
+          <h2>From &ldquo;it&rsquo;s broken&rdquo; to &ldquo;it&rsquo;s documented&rdquo;</h2>
         </header>
         <ol class="process">
-          <li class="reveal"><span class="process__num">01</span><svg class="ic"><use href="assets/img/icons.svg#i-search"/></svg><h3>Assess</h3><p>Find out what's running, what depends on it and what's at risk.</p></li>
-          <li class="reveal"><span class="process__num">02</span><svg class="ic"><use href="assets/img/icons.svg#i-clipboard-list"/></svg><h3>Plan</h3><p>Agree on the change, the maintenance window and the way back.</p></li>
-          <li class="reveal"><span class="process__num">03</span><svg class="ic"><use href="assets/img/icons.svg#i-wrench"/></svg><h3>Build</h3><p>Make the change, and script it if it will ever happen again.</p></li>
-          <li class="reveal"><span class="process__num">04</span><svg class="ic"><use href="assets/img/icons.svg#i-monitor-check"/></svg><h3>Verify</h3><p>Test it, watch the monitoring, and confirm with the people affected.</p></li>
-          <li class="reveal"><span class="process__num">05</span><svg class="ic"><use href="assets/img/icons.svg#i-file-text"/></svg><h3>Document</h3><p>Write it down, so the next person doesn't have to guess.</p></li>
+          <li class="reveal"><span class="process__num">01</span><h3>Assess</h3><p>Find out what's running, what depends on it and what's at risk.</p></li>
+          <li class="reveal"><span class="process__num">02</span><h3>Plan</h3><p>Agree on the change, the maintenance window and the way back.</p></li>
+          <li class="reveal"><span class="process__num">03</span><h3>Build</h3><p>Make the change, and script it if it will ever happen again.</p></li>
+          <li class="reveal"><span class="process__num">04</span><h3>Verify</h3><p>Test it, watch the monitoring, and confirm with the people affected.</p></li>
+          <li class="reveal"><span class="process__num">05</span><h3>Document</h3><p>Write it down, so the next person doesn't have to guess.</p></li>
         </ol>
       </div>
     </section>
 
     <!-- ================= EXPERIENCE ================= -->
-    <section class="section section--alt" id="experience">
+    <section class="section" id="experience">
       <div class="container">
-        <header class="section__head reveal">
-          <p class="eyebrow">Experience</p>
-          <h2 class="section__title">Where I've been working</h2>
+        <header class="head reveal">
+          <p class="head__no">04 / Experience</p>
+          <h2>Where I've been working</h2>
         </header>
 
-        <ol class="timeline">
-          <li class="timeline__item reveal">
-            <div class="timeline__meta">
-              <span class="timeline__date">Mar 2026 – Present</span>
-              <span class="tag tag--live">Current · On-site</span>
+        <ol class="log">
+          <li class="log__item reveal">
+            <div class="log__when">
+              <span>Mar 2026 – Present</span>
+              <small><i class="led"></i>Current · On-site</small>
             </div>
-            <div class="timeline__body">
+            <div class="log__body">
               <h3>Information Technology Support Officer</h3>
-              <p class="timeline__org">R&amp;I Electrical Appliances (Pvt.) Ltd. · Karachi</p>
+              <p class="log__org">R&amp;I Electrical Appliances (Pvt.) Ltd. · Karachi</p>
               <ul>
                 <li>Maintain enterprise IT infrastructure: servers, network devices and end-user systems.</li>
                 <li>Configure and troubleshoot Cisco switching and routing, VLANs and next-generation firewalls.</li>
@@ -279,14 +274,14 @@
             </div>
           </li>
 
-          <li class="timeline__item reveal">
-            <div class="timeline__meta">
-              <span class="timeline__date">Aug 2025 – Feb 2026</span>
-              <span class="tag">On-site</span>
+          <li class="log__item reveal">
+            <div class="log__when">
+              <span>Aug 2025 – Feb 2026</span>
+              <small>On-site</small>
             </div>
-            <div class="timeline__body">
+            <div class="log__body">
               <h3>Information Technology Intern</h3>
-              <p class="timeline__org">R&amp;I Electrical Appliances (Pvt.) Ltd. · Karachi</p>
+              <p class="log__org">R&amp;I Electrical Appliances (Pvt.) Ltd. · Karachi</p>
               <ul>
                 <li>Assisted in administering Windows Server and enterprise IT infrastructure.</li>
                 <li>Managed Active Directory (AD DS): user accounts, groups and Organizational Units.</li>
@@ -298,13 +293,13 @@
             </div>
           </li>
 
-          <li class="timeline__item reveal">
-            <div class="timeline__meta">
-              <span class="timeline__date">Education</span>
+          <li class="log__item reveal">
+            <div class="log__when">
+              <span>Education</span>
             </div>
-            <div class="timeline__body">
+            <div class="log__body">
               <h3>Bachelor of Science in Computer Science</h3>
-              <p class="timeline__org">Iqra University · Karachi</p>
+              <p class="log__org">Iqra University · Karachi</p>
               <p>Coursework in computer networks, operating systems, cloud computing, cyber security, database systems, software engineering, IT infrastructure and virtualization.</p>
             </div>
           </li>
@@ -313,19 +308,20 @@
     </section>
 
     <!-- ================= PROJECTS ================= -->
-    <section class="section" id="projects">
+    <section class="section section--tint" id="projects">
       <div class="container">
-        <header class="section__head section__head--row reveal">
+        <header class="head head--row reveal">
           <div>
-            <p class="eyebrow">Featured projects</p>
-            <h2 class="section__title">Open-source work you can inspect</h2>
+            <p class="head__no">05 / Projects</p>
+            <h2>Open-source work you can inspect</h2>
           </div>
           <a class="link-arrow" href="https://github.com/anastanveer653" target="_blank" rel="noopener">All on GitHub <svg class="ic"><use href="assets/img/icons.svg#i-arrow-up-right"/></svg></a>
         </header>
 
         <div class="projects">
           <article class="project project--wide reveal">
-            <a class="project__media" href="https://github.com/anastanveer653/windows-server-hardening-toolkit" target="_blank" rel="noopener">
+            <span class="project__no" aria-hidden="true">01</span>
+            <a class="shot" data-tilt="4" href="https://github.com/anastanveer653/windows-server-hardening-toolkit" target="_blank" rel="noopener">
               <img src="assets/img/projects/windows-report.png" alt="HTML compliance report from the Windows Server Hardening Toolkit, showing the security score and findings by severity" loading="lazy" width="2560" height="2360">
             </a>
             <div class="project__body">
@@ -346,7 +342,8 @@
           </article>
 
           <article class="project project--wide project--flip reveal">
-            <a class="project__media" href="https://github.com/anastanveer653/docker-monitoring-stack" target="_blank" rel="noopener">
+            <span class="project__no" aria-hidden="true">02</span>
+            <a class="shot" data-tilt="4" href="https://github.com/anastanveer653/docker-monitoring-stack" target="_blank" rel="noopener">
               <img src="assets/img/projects/docker-host-overview.png" alt="Grafana Host Overview dashboard from the Docker Monitoring Stack" loading="lazy" width="1600" height="1700">
             </a>
             <div class="project__body">
@@ -367,8 +364,9 @@
 
           <div class="projects__grid">
             <article class="project project--code reveal">
+              <span class="project__no" aria-hidden="true">03</span>
               <figure class="term">
-                <figcaption><span class="code-card__dots"><i></i><i></i><i></i></span> site.yml</figcaption>
+                <figcaption>site.yml</figcaption>
 <pre><code><span class="c"># firewall before sshd: a new SSH port</span>
 <span class="c"># must be open before sshd moves to it</span>
 - <span class="k">role</span>: firewall
@@ -387,8 +385,9 @@
             </article>
 
             <article class="project project--code reveal">
+              <span class="project__no" aria-hidden="true">04</span>
               <figure class="term">
-                <figcaption><span class="code-card__dots"><i></i><i></i><i></i></span> main.tf</figcaption>
+                <figcaption>main.tf</figcaption>
 <pre><code><span class="k">module</span> <span class="s">"vpc"</span> {
   source           = <span class="s">"./modules/vpc"</span>
   vpc_cidr         = var.vpc_cidr
@@ -407,8 +406,9 @@
             </article>
 
             <article class="project project--code reveal">
+              <span class="project__no" aria-hidden="true">05</span>
               <figure class="term">
-                <figcaption><span class="code-card__dots"><i></i><i></i><i></i></span> terminal</figcaption>
+                <figcaption>terminal</figcaption>
 <pre><code><span class="p">$</span> envy init
 <span class="p">$</span> envy set DATABASE_URL
 <span class="p">$</span> envy list -e production
@@ -428,8 +428,9 @@
             </article>
 
             <article class="project project--code reveal">
+              <span class="project__no" aria-hidden="true">06</span>
               <figure class="term term--arch" aria-label="HR Time solution layers">
-                <figcaption><span class="code-card__dots"><i></i><i></i><i></i></span> HrTime.slnx</figcaption>
+                <figcaption>HrTime.slnx</figcaption>
                 <div class="layers">
                   <span>HrTime.Web <small>Blazor · ASP.NET Core Identity</small></span>
                   <span>HrTime.Infrastructure <small>EF Core · SQL Server</small></span>
@@ -451,32 +452,32 @@
     </section>
 
     <!-- ================= SKILLS ================= -->
-    <section class="section section--alt" id="skills">
+    <section class="section" id="skills">
       <div class="container">
-        <header class="section__head reveal">
-          <p class="eyebrow">Skills &amp; tools</p>
-          <h2 class="section__title">What I work with</h2>
+        <header class="head reveal">
+          <p class="head__no">06 / Skills &amp; tools</p>
+          <h2>What I work with</h2>
         </header>
 
         <div class="skills">
-          <div class="skill-group reveal">
-            <h3><svg class="ic"><use href="assets/img/icons.svg#i-server"/></svg>Servers &amp; directory</h3>
+          <div class="skills__row reveal">
+            <h3>Servers &amp; directory</h3>
             <div class="chips chips--lg"><span>Windows Server 2016–2025</span><span>Active Directory</span><span>Group Policy</span><span>DNS · DHCP</span><span>File &amp; print servers</span><span>NTFS permissions</span><span>Ubuntu · Debian · RHEL</span></div>
           </div>
-          <div class="skill-group reveal">
-            <h3><svg class="ic"><use href="assets/img/icons.svg#i-network"/></svg>Networking &amp; security</h3>
+          <div class="skills__row reveal">
+            <h3>Networking &amp; security</h3>
             <div class="chips chips--lg"><span>Cisco routing &amp; switching</span><span>VLAN · VPN · NAT</span><span>TCP/IP · subnetting</span><span>NGFW</span><span>pfSense</span><span>Wireshark</span><span>Windows Firewall</span><span>CIS hardening</span></div>
           </div>
-          <div class="skill-group reveal">
-            <h3><svg class="ic"><use href="assets/img/icons.svg#i-phone-call"/></svg>VoIP, data center &amp; virtualization</h3>
+          <div class="skills__row reveal">
+            <h3>VoIP, data center &amp; virtualization</h3>
             <div class="chips chips--lg"><span>Grandstream UCM</span><span>SIP · IP PBX</span><span>Vutlan monitoring</span><span>VMware ESXi</span><span>VMware Workstation</span><span>Hyper-V</span></div>
           </div>
-          <div class="skill-group reveal">
-            <h3><svg class="ic"><use href="assets/img/icons.svg#i-terminal"/></svg>Automation, cloud &amp; monitoring</h3>
+          <div class="skills__row reveal">
+            <h3>Automation, cloud &amp; monitoring</h3>
             <div class="chips chips--lg"><span>PowerShell</span><span>Bash</span><span>Ansible</span><span>Terraform</span><span>AWS</span><span>GitHub Actions</span><span>Docker</span><span>Prometheus</span><span>Grafana</span></div>
           </div>
-          <div class="skill-group reveal">
-            <h3><svg class="ic"><use href="assets/img/icons.svg#i-database"/></svg>Programming &amp; data</h3>
+          <div class="skills__row reveal">
+            <h3>Programming &amp; data</h3>
             <div class="chips chips--lg"><span>C#</span><span>.NET · Blazor</span><span>EF Core</span><span>SQL Server</span><span>SQL</span><span>Go</span><span>Python</span><span>Git</span></div>
           </div>
         </div>
@@ -487,26 +488,42 @@
          Do not publish invented quotes. -->
 
     <!-- ================= CONTACT ================= -->
-    <section class="section" id="contact">
-      <div class="container">
-        <div class="cta reveal">
-          <div class="cta__glow" aria-hidden="true"></div>
-          <p class="eyebrow">Let's work together</p>
-          <h2 class="cta__title">Need servers, networks or automation you can rely on?</h2>
-          <p class="cta__lede">I'm open to full-time on-site and remote roles, and to remote contracts. Send me a short note about the role or the problem, and I'll reply with how I'd approach it.</p>
+    <section class="contact" id="contact">
+      <div class="container contact__grid">
+        <div class="contact__copy">
+        <p class="head__no">07 / Contact</p>
+        <h2 class="contact__title reveal">Need servers, networks or automation you can rely on?</h2>
+        <p class="contact__lede reveal">I'm open to full-time on-site and remote roles, and to remote contracts. Send me a short note about the role or the problem, and I'll reply with how I'd approach it.</p>
 
-          <div class="cta__actions">
-            <a class="btn btn--primary btn--lg" href="mailto:anastanveer653@gmail.com"><svg class="ic"><use href="assets/img/icons.svg#i-mail"/></svg>anastanveer653@gmail.com</a>
-            <button class="btn btn--ghost btn--lg" type="button" id="copy-email" data-email="anastanveer653@gmail.com">
-              <svg class="ic ic--copy"><use href="assets/img/icons.svg#i-copy"/></svg><span>Copy email</span>
-            </button>
-          </div>
+        <div class="contact__actions reveal">
+          <a class="contact__mail" href="mailto:anastanveer653@gmail.com">anastanveer653@gmail.com</a>
+          <button class="btn btn--light" type="button" id="copy-email" data-email="anastanveer653@gmail.com">
+            <svg class="ic"><use href="assets/img/icons.svg#i-copy"/></svg><span>Copy email</span>
+          </button>
+        </div>
 
-          <ul class="socials">
-            <li><a href="https://www.linkedin.com/in/anastanveer-it/" target="_blank" rel="noopener"><svg class="ic"><use href="assets/img/icons.svg#i-linkedin"/></svg>LinkedIn</a></li>
-            <li><a href="https://github.com/anastanveer653" target="_blank" rel="noopener"><svg class="ic"><use href="assets/img/icons.svg#i-github"/></svg>GitHub</a></li>
-            <li><span><svg class="ic"><use href="assets/img/icons.svg#i-map-pin"/></svg>Karachi, Pakistan (UTC+5)</span></li>
-          </ul>
+        <ul class="socials">
+          <li><a href="https://www.linkedin.com/in/anastanveer-it/" target="_blank" rel="noopener"><svg class="ic"><use href="assets/img/icons.svg#i-linkedin"/></svg>LinkedIn</a></li>
+          <li><a href="https://github.com/anastanveer653" target="_blank" rel="noopener"><svg class="ic"><use href="assets/img/icons.svg#i-github"/></svg>GitHub</a></li>
+          <li><span><svg class="ic"><use href="assets/img/icons.svg#i-map-pin"/></svg>Karachi, Pakistan (UTC+5)</span></li>
+        </ul>
+        </div>
+
+        <div class="contact__art reveal" aria-hidden="true">
+          <svg class="plug" viewBox="0 0 300 300">
+            <rect x="20" y="40" width="150" height="220" rx="8"/>
+            <circle cx="95" cy="62" r="5"/><circle cx="95" cy="238" r="5"/>
+            <rect class="plug__dark" x="62" y="118" width="66" height="64"/>
+            <path d="M62 118h66v64h-20v10H82v-10H62z"/>
+            <rect class="plug__led" x="66" y="102" width="16" height="8"/>
+            <rect class="plug__led" x="108" y="102" width="16" height="8"/>
+            <g class="plug__lead">
+              <path class="plug__cable" d="M166 150h56c52 0 30 96 92 96"/>
+              <path class="plug__body" d="M74 128h72l18 9v26l-18 9H74z"/>
+              <path d="M84 136v11M93 136v11M102 136v11M111 136v11M120 136v11"/>
+            </g>
+            <text x="20" y="288">LINK UP</text>
+          </svg>
         </div>
       </div>
     </section>
@@ -514,11 +531,13 @@
 
   <footer class="footer">
     <div class="container footer__inner">
-      <p>© <span id="year">2026</span> Anas Tanveer</p>
-      <p class="muted">Hand-built with HTML, CSS and JavaScript · <a href="https://github.com/anastanveer653/anastanveer" target="_blank" rel="noopener">source</a></p>
+      <p><span>Drawn by</span>© <span id="year">2026</span> Anas Tanveer</p>
+      <p><span>Built with</span>HTML, CSS, JavaScript and three.js, by hand</p>
+      <p><span>Source</span><a href="https://github.com/anastanveer653/anastanveer" target="_blank" rel="noopener">github.com/anastanveer653/anastanveer</a></p>
     </div>
   </footer>
 
+  <!-- main.js loads assets/js/rack.js (the 3D rack) once the page itself has finished loading. -->
   <script src="assets/js/main.js" defer></script>
 </body>
 </html>

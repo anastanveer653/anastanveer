@@ -581,6 +581,7 @@ function init() {
     if (consoleDev.term.started < 0 && step === 'console') consoleDev.term.started = clock;
     root.dataset.mode = active.length ? 'step' : 'hero';
     lastDrag = -10; // let a dragged rack ease back to the new view
+    lastActive = clock + 1.5; // a step change keeps full frame rate until the move has settled
   }
 
   // ---- pointer: hover, drag to turn, click to jump to the matching text ----
@@ -588,12 +589,14 @@ function init() {
   const ndc = new THREE.Vector2(2, 2);
   const ray = new THREE.Raycaster();
   let hovered = null, dragging = false, dragYaw = 0, dragStartX = 0, dragStartYaw = 0, moved = 0, lastDrag = -10;
+  let lastActive = 0; // clock time of the last pointer move or step change
   const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
   root.addEventListener('pointermove', (e) => {
     const r = canvas.getBoundingClientRect();
     ndc.set(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
     if (finePointer) pointer.set(ndc.x, ndc.y);
+    lastActive = clock;
     if (dragging) {
       moved = Math.max(moved, Math.abs(e.clientX - dragStartX));
       dragYaw = THREE.MathUtils.clamp(dragStartYaw + (e.clientX - dragStartX) * 0.007, -1.5, 1.5);
@@ -620,11 +623,12 @@ function init() {
   // "wide" means the labels beside the rack are shown (the stylesheet hides them at the same width)
   const wideQuery = window.matchMedia('(min-width: 1001px)');
   let width = 1, height = 1, wide = true;
+  let maxDpr = wideQuery.matches ? 2 : 1.5;
   function resize() {
     const r = root.getBoundingClientRect();
     width = Math.max(1, Math.round(r.width)); height = Math.max(1, Math.round(r.height));
     wide = wideQuery.matches;
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, maxDpr));
     renderer.setSize(width, height, false);
     camera.aspect = width / height;
     camera.updateProjectionMatrix();
@@ -635,6 +639,8 @@ function init() {
 
   // ---- frame loop ----
   let clock = 0, last = 0, running = false, visible = true, started = -1, live = false;
+  // Slow devices: if frames stay slow, first render at a lower resolution, then give up and show the still image.
+  let slowFrames = 0, slowTime = 0, quality = 2;
   let frameDim = reduceMotion ? 0 : 1, frameDimTarget = 0;
   const v = new THREE.Vector3(), w = new THREE.Vector3(), corner = new THREE.Vector3();
   const UP = new THREE.Vector3(0, 1, 0);
@@ -647,8 +653,23 @@ function init() {
   function tick(now) {
     if (!running) return;
     requestAnimationFrame(tick);
-    const dt = Math.min(Math.max((now - last) / 1000, 0), 0.05);
+    // When nothing is moving except the slow sway and the LEDs, draw every other frame to save battery.
+    const calm = started >= 0 && clock - started > 4 && !dragging && clock - lastActive > 1.5;
+    if (calm && now - last < 30) return;
+    const raw = (now - last) / 1000;
+    const dt = Math.min(Math.max(raw, 0), 0.05);
     last = now;
+    if (!calm && started >= 0 && clock - started > 1.5 && raw > 0 && raw < 0.5) {
+      slowFrames++; slowTime += raw;
+      if (slowFrames === 40) {
+        if (slowTime / slowFrames > 0.045) {
+          quality--;
+          if (quality === 1) { maxDpr = 1; resize(); }
+          else { running = false; quality = 0; root.classList.remove('is-live'); root.classList.add('is-static'); return; }
+        }
+        slowFrames = 0; slowTime = 0;
+      }
+    }
     clock += dt;
     if (started < 0) started = clock;
     const since = clock - started;
@@ -762,11 +783,11 @@ function init() {
     }
 
     renderer.render(scene, camera);
-    if (!live) { live = true; root.classList.add('is-live'); }
+    if (!live) { live = true; root.classList.remove('is-static'); root.classList.add('is-live'); }
   }
 
   function setRunning() {
-    const should = visible && !document.hidden;
+    const should = visible && !document.hidden && quality > 0;
     if (should === running) return;
     running = should;
     if (running) { last = performance.now(); requestAnimationFrame(tick); }

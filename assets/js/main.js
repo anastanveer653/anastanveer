@@ -67,9 +67,18 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', onScroll);
 
-  // ---- rack: if the 3D scene has not started after a while (blocked script, slow network), show the still image ----
+  // ---- rack: the 3D scene loads after the page itself, so it never delays the text ----
+  // Visitors who asked their browser to save data get the still image instead, and so does
+  // anyone whose scene has not started after a while (blocked script, very slow network).
   const rack = document.getElementById('rack');
-  if (rack) setTimeout(() => { if (!rack.classList.contains('is-live')) rack.classList.add('is-static'); }, 6000);
+  if (rack) {
+    const showStill = () => { if (!rack.classList.contains('is-live')) rack.classList.add('is-static'); };
+    const startRack = () => import('./rack.js').catch(showStill);
+    if (navigator.connection && navigator.connection.saveData) showStill();
+    else if (document.readyState === 'complete') startRack();
+    else window.addEventListener('load', startRack, { once: true });
+    setTimeout(showStill, 8000);
+  }
 
   // ---- reveal on scroll ----
   const reveals = document.querySelectorAll('.reveal');
